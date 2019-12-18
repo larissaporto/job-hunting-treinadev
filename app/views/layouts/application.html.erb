@@ -10,8 +10,20 @@
   </head>
 
   <body>
-    <%= render partial: 'shared/menu' %>
-    <%= link_to 'Entrar', url: 'https://google.com' %>
+    <nav>
+    <% if applicant_signed_in? %>
+      <%= render partial: 'shared/menu' %>
+      <%= link_to 'Sair', destroy_applicant_session_path, method: :delete %>
+    <% elsif headhunter_signed_in? %>
+      <%= render partial: 'shared/menu' %>
+      <%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Login Candidato', new_applicant_session_path %>
+      <%= link_to 'Login Headhunter', new_headhunter_session_path %>
+    <% end %>
+    </nav>
+    <p> <%= notice %> </p>
+    <p> <%= alert %> </p>
     <%= yield %>
   </body>
 </html>
