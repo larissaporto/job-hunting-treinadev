@@ -1,0 +1,33 @@
+<%= form_with model: job, local: true do |f| %>
+
+    <p>
+    <%= f.label :title, 'Título' %>
+    <%= f.text_field :title %>
+    </p>
+    <p>
+    <%= f.label :description, 'Descrição'%>
+    <%= f.text_area :description %>
+    </p>
+    <p>
+    <%= f.label :skills, 'Habilidades'%>
+    <%= f.text_field :skills %>
+    </p>
+    <p>
+    <%= f.label :salary, 'Salário'%>
+    <%= f.text_field :salary %>
+    </p>
+    <p>
+    <%= f.label :end_date, 'Data Fim'%>
+    <%= f.date_field :end_date %>
+    </p>
+    <p>
+    <%= f.label :where, 'Região'%>
+    <%= f.text_field :where %>
+    </p>
+    <div>
+    <%= f.label :job_level_id, 'Nível' %>
+    <%= f.collection_select(:job_level_id, @jobs, :id, :level) %>
+    </div>
+
+    <%= f.submit %>
+<% end %>
