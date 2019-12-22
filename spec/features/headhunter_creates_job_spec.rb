@@ -13,12 +13,13 @@ feature 'Headhunter creates a job vacancy' do
         fill_in 'Título', with: 'Vaga desenvolvedor'
         fill_in 'Descrição', with: 'Empresa X está a procura de Juniors'
         fill_in 'Habilidades', with: 'Ruby on Rails'
-        fill_in 'Salário', with: 5000
+        fill_in 'Salário de', with: 5000
+        fill_in 'Salário até', with: 10000
         fill_in 'Data Fim', with: '05/01/2020'
         fill_in 'Região', with: 'Avenida Paulista'
-        select 'Junior', from: 'Nível'
+        choose 'Júnior'
         
-        click_on 'Enviar'
+        click_on 'Criar Vaga'
 
         expect(page).to have_content('Vaga desenvolvedor')
         expect(page).to have_content('Vaga criada com sucesso')

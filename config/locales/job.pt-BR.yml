@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    attributes:
+      job:
+        title: Título
+        description: Descrição
+        skills: Habilidades
+        salary_from: Salário de
+        salary_to: Salário até
+        end_date: Data Fim
+        where: Região
+        job_level: Nível
+      job/job_level: # You need to nest the values under model_name/attribute_name
+        internship: Estágio
+        junior: Júnior
+        manager: Pleno
+        senior: Sênior
+        specialist: Especialista
+        director: Diretor 
+    models:
+      job: Vaga

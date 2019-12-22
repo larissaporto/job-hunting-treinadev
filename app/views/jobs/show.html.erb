@@ -1,0 +1,22 @@
+<h1> <%= @job.title %> </h1>
+<dl>
+    <dt>Nível:</dt>
+    <dd> <%= @job.job_level %> </dd>
+
+    <dt>Habilidades:</dt>
+    <dd> <%= @job.skills %> </dd>
+
+    <dt> Faixa Salarial: </dt>
+    <dd> <%= @job.salary_from %> - <%= @job.salary_to %> </dd>
+
+    <dt>Descrição: </dt>
+    <dd> <%= @job.description %> </dd>
+
+    <dt>Região: </dt>
+    <dd> <%= @job.where%> </dd>
+
+    <dt> Vence em: </dt>
+    <dd> <%= @job.end_date %> </dd>
+</dl>
+
+<%= link_to 'Voltar', jobs_path %>
