@@ -11,8 +11,8 @@ class JobsController < ApplicationController
     end
 
     def create
-        @job = Job.new(params.require(:job).permit(:title, :description, :salary_from, 
-                                                   :salary_to, :skills, :where, :job_level) )
+        @job = Job.new(params.require(:job).permit(:title, :description, :salary_from, :end_date,
+                                                   :salary_to, :skills, :where, :job_level ) )
         if @job.save!
             flash[:notice] = 'Vaga criada com sucesso'
             redirect_to @job

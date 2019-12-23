@@ -7,7 +7,7 @@
     <dd> <%= @job.skills %> </dd>
 
     <dt> Faixa Salarial: </dt>
-    <dd> <%= @job.salary_from %> - <%= @job.salary_to %> </dd>
+    <dd> <%= number_to_currency(@job.salary_from) %> - <%= number_to_currency(@job.salary_to) %> </dd>
 
     <dt>Descrição: </dt>
     <dd> <%= @job.description %> </dd>
