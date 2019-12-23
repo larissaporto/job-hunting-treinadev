@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_173824) do
+ActiveRecord::Schema.define(version: 2019_12_23_012539) do
 
   create_table "applicants", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 2019_12_21_173824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "job_level", default: 0
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "social_name"
+    t.date "birth_date"
+    t.integer "qualification", default: 0
+    t.text "description"
+    t.text "experience"
+    t.integer "applicant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_profiles_on_applicant_id"
   end
 
 end

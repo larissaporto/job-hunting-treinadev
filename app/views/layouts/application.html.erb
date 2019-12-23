@@ -12,10 +12,10 @@
   <body>
     <nav>
     <% if applicant_signed_in? %>
-      <%= render partial: 'shared/menu' %>
+      <%= render partial: 'shared/menu_applicant' %>
       <%= link_to 'Sair', destroy_applicant_session_path, method: :delete %>
     <% elsif headhunter_signed_in? %>
-      <%= render partial: 'shared/menu' %>
+      <%= render partial: 'shared/menu_headhunter' %>
       <%= link_to 'Sair', destroy_headhunter_session_path, method: :delete %>
     <% else %>
       <%= link_to 'Login Candidato', new_applicant_session_path %>
