@@ -16,7 +16,7 @@
     <dd> <%= @job.where%> </dd>
 
     <dt> Vence em: </dt>
-    <dd> <%= @job.end_date %> </dd>
+    <dd> <%= l @job.end_date %> </dd>
 </dl>
 
 <%= link_to 'Voltar', jobs_path %>

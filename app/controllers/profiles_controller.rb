@@ -1,9 +1,8 @@
 class ProfilesController < ApplicationController
-    before_action :authenticate_applicant! 
+    before_action :authenticate_applicant!, only:[:new, :create, :edit, :update] 
     before_action :get_profile
     
     def new
-        
     end
 
     def create
@@ -21,7 +20,9 @@ class ProfilesController < ApplicationController
     end
 
     def edit
-        
+    end
+
+    def update
     end
 
 
@@ -33,7 +34,7 @@ class ProfilesController < ApplicationController
 
     def profile_params
         params.require(:profile).permit(:name, :social_name, :description, :qualification, 
-                                        :birth_date)
+                                        :birth_date, :applicant_id, :photo)
     end
         
 end

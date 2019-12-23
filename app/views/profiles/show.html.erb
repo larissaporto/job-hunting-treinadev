@@ -1,0 +1,20 @@
+<%= image_tag @profile.photo %>
+
+<% if @profile.social_name.present? %>
+   <h1>Perfil de <%= @profile.social_name %> </h1>
+<% else %>
+   <h1>Perfil de <%= @profile.name %> </h1>
+<% end %>
+
+<dl>
+    <dt> Data de Nascimento: </dt>
+    <dd> <%= l @profile.birth_date %> </dd>
+    <dt> Descrição: </dt>
+    <dd> <%= @profile.description %> </dd>
+    <dt> Experiência: </dt>
+    <dd> <%= @profile.experience %> </dd>
+    <dt> Formação </dt>
+    <dd> <%= @profile.qualification %> </dd>
+</dl>
+
+<%= link_to 'Voltar', root_path %>

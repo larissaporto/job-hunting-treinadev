@@ -26,5 +26,10 @@
     <%= f.select(:qualification, Profile.qualifications.keys, {}, class: 'profile-qualifications-select' ) %>
     </div>
 
+    <div>
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+    </div>
+
     <%= f.submit %>
 <% end %>
