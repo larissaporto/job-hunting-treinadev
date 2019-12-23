@@ -1,3 +1,7 @@
 <nav>
-<%= link_to 'Novo Perfil', new_profile_path %>
+   <% if current_applicant.profile %>
+   <%= link_to 'Perfil', current_applicant.profile %>
+   <% else %>
+   <%= link_to 'Novo Perfil', new_profile_path %>
+   <% end %>
 </nav>

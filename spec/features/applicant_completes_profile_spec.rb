@@ -24,6 +24,8 @@ feature 'Applicant creates his profile' do
         expect(page).to have_content('Perfil salvo')
         expect(page).not_to have_content('Aninha')
         expect(page).to have_css("img[src*='images.jpeg']")
+        expect(page).not_to have_link('Novo Perfil')
+        expect(page).to have_link('Perfil')
 
     end
 end
