@@ -1,4 +1,4 @@
-<%= image_tag @profile.photo %>
+<%= image_tag @profile.photo if @profile.photo.attached?%>
 
 <% if @profile.social_name.present? %>
    <h1>Perfil de <%= @profile.social_name %> </h1>
@@ -8,7 +8,7 @@
 
 <dl>
     <dt> Data de Nascimento: </dt>
-    <dd> <%= l @profile.birth_date %> </dd>
+    <dd> <%= l @profile.birth_date if @profile.birth_date.present?%> </dd>
     <dt> Descrição: </dt>
     <dd> <%= @profile.description %> </dd>
     <dt> Experiência: </dt>
@@ -17,4 +17,5 @@
     <dd> <%= @profile.qualification %> </dd>
 </dl>
 
+<%= link_to 'Editar Perfil', edit_profile_path(@profile) %>
 <%= link_to 'Voltar', root_path %>

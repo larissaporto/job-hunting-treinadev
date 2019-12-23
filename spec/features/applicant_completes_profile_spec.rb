@@ -8,7 +8,8 @@ feature 'Applicant creates his profile' do
         login_as(applicant, scope: :applicant)
 
         visit root_path
-        click_on 'Novo Perfil'
+        click_on 'Perfil'
+        click_on 'Editar Perfil'
         
         fill_in 'Nome', with: 'Aninha'
         fill_in 'Nome Social', with: 'Pedro'
@@ -18,7 +19,7 @@ feature 'Applicant creates his profile' do
         fill_in 'Experiência', with: 'Trabalhei na empresa X'
         attach_file('Foto', Rails.root.join('spec', 'support', 'images.jpeg'))
 
-        click_on 'Criar Perfil'
+        click_on 'Atualizar Perfil'
 
         expect(page).to have_content('Pedro') 
         expect(page).to have_content('Perfil salvo')

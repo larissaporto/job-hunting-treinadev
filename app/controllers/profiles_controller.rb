@@ -20,9 +20,17 @@ class ProfilesController < ApplicationController
     end
 
     def edit
+        
     end
 
     def update
+        if @profile.update!(profile_params)
+            flash[:notice] = 'Perfil salvo'
+            redirect_to @profile
+        else
+            flash[:alert] = "Erro"
+            render :update
+        end
     end
 
 
