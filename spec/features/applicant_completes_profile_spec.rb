@@ -7,9 +7,7 @@ feature 'Applicant creates his profile' do
         
         login_as(applicant, scope: :applicant)
 
-        visit root_path
-        click_on 'Perfil'
-        click_on 'Editar Perfil'
+        visit edit_profile_path(applicant.profile)
         
         fill_in 'Nome', with: 'Aninha'
         fill_in 'Nome Social', with: 'Pedro'

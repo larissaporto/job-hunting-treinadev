@@ -10,7 +10,7 @@ feature 'applicant sign in' do
         fill_in 'Senha', with: applicant.password
         click_on 'Log in'
         
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq(edit_profile_path(applicant.profile))
         expect(page).to have_content('Login efetuado com sucesso.')
         expect(page).to have_link('Sair')
         expect(page).not_to have_link('Login Candidato')

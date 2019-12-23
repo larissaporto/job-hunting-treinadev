@@ -25,6 +25,7 @@ class ProfilesController < ApplicationController
 
     def update
         if @profile.update!(profile_params)
+            @profile.done! unless @profile.done?
             flash[:notice] = 'Perfil salvo'
             redirect_to @profile
         else

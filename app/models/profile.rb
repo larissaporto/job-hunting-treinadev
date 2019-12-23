@@ -2,6 +2,11 @@ class Profile < ApplicationRecord
   belongs_to :applicant
   has_one_attached :photo
   
+  enum condition: {
+    incomplete: 0,
+    done: 10
+  }
+  
   enum qualification: {
     'Sem Formação': 0,
     'Primeiro Grau': 5,
