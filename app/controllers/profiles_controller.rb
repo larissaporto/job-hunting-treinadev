@@ -3,21 +3,37 @@ class ProfilesController < ApplicationController
     before_action :get_profile
     
     def new
-        @profile = current.applicant.build_profile
-    end
-
-    def create
         
     end
 
-    def show
-        @profile = get_profile    
+    def create
+        @profile = current_applicant.build_profile(profile_params)
+        if @profile.save
+            flash[:notice] = 'Perfil salvo'
+            redirect_to @profile
+        else
+            flash[:alert] = "Erro"
+            render :new
+  end
     end
+
+    def show
+    end
+
+    def edit
+        
+    end
+
 
     private
 
     def get_profile
-        @profile = current_applicant.profile
+        @profile = current_applicant.profile || current_applicant.build_profile
+    end
+
+    def profile_params
+        params.require(:profile).permit(:name, :social_name, :description, :qualification, 
+                                        :birth_date)
     end
         
 end
