@@ -5,6 +5,7 @@
  <% @jobs.each do |job| %>
     <li>
     <%= link_to job.title, job %> 
+    <p> <%= job.description %> </p>
     </li>
 <% end %>
  </ul>

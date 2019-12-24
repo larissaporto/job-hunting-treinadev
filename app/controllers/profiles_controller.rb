@@ -34,6 +34,10 @@ class ProfilesController < ApplicationController
         end
     end
 
+    def my_jobs
+        @applies = Apply.where(@profile.applies)
+    end
+
 
     private
 

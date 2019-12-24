@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :jobs, only: [:index, :new, :create, :show] do
     post 'start', on: :member
   end
-  resources :profiles, only: [:edit, :update, :show, :index, :new, :create]
+  resources :profiles, only: [:edit, :update, :show, :index, :new, :create] do
+    get 'my_jobs', on: :member
+  end
   resources :applies, only: [:edit, :update, :show]
 end
