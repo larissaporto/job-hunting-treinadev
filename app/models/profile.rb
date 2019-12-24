@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :applicant
   has_one_attached :photo
+  has_many :applies
+  has_many :jobs, through: :applies
   
   enum condition: {
     incomplete: 0,

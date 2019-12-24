@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
     before_action :authenticate_headhunter!, only: [:new, :create]
     before_action :authorize_headhunter, only: [:new, :create]
-    before_action :set_job, only:[:show]
+    before_action :set_job, only:[:show, :start]
 
     def index 
         @jobs = Job.all
@@ -23,6 +23,11 @@ class JobsController < ApplicationController
     end
 
     def show
+    end
+
+    def start
+        @job.applies.create!(profile: current_applicant.profile)
+        redirect_to controller: :applies, action: :edit, to_param => @job.applies
     end
 
     private

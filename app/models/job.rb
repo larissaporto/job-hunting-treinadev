@@ -1,4 +1,6 @@
 class Job < ApplicationRecord
+    has_many :applies
+    has_many :profiles, through: :applies 
 
     enum job_level: { Estágio: 0, Júnior: 5, Pleno: 10, Sênior: 15, Especialista: 20, Diretor: 25 }
 

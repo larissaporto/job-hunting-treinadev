@@ -20,7 +20,7 @@
 </dl>
 <% if current_applicant %>
    <% if current_applicant.profile.done? %>
-      <%= link_to 'Incrição', edit_apply_path(@job.apply) %>
+      <%= button_to 'Inscrição', start_job_path %>
    <% end %>
 <% end %>
 

@@ -1,0 +1,12 @@
+<h3>Diga o motivo pelo qual quer a vaga:</h3>
+<p>Faça uma cover letter para esse emprego</p>
+
+<%= form_with model: @apply, local: true do |f|%>
+<p>
+    <%= f.label :cover_letter, 'Descrição'%>
+    <%= f.text_area :cover_letter %>
+</p>
+<p>
+    <%= f.submit 'Se inscrever'%>
+</p>
+<% end %>
