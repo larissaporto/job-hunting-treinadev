@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :jobs, only: [:index, :new, :create, :show]
   resources :profiles, only: [:edit, :update, :show, :index, :new, :create]
+  resources :applies, only: [:edit, :update, :show]
 end

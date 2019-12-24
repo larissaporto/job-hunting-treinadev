@@ -18,5 +18,11 @@
     <dt> Vence em: </dt>
     <dd> <%= l @job.end_date %> </dd>
 </dl>
+<% if current_applicant %>
+   <% if current_applicant.profile.done? %>
+      <%= link_to 'Incrição', edit_apply_path(@job.apply) %>
+   <% end %>
+<% end %>
+
 
 <%= link_to 'Voltar', jobs_path %>

@@ -1,3 +1,13 @@
 <h1> Vagas </h1>
 <%= link_to 'Criar nova vaga', new_job_path%> 
+
+<ul>
+ <% @jobs.each do |job| %>
+    <li>
+    <%= link_to job.title, job %> 
+    </li>
+<% end %>
+ </ul>
+
+
 <%= link_to 'Voltar', root_path %>
