@@ -24,5 +24,9 @@
    <% end %>
 <% end %>
 
+<% if current_headhunter %>
+   <%= button_to 'Candidatos', candidates_job_path, method: :get %>
+<% end %>
+
 
 <%= link_to 'Voltar', jobs_path %>

@@ -1,0 +1,11 @@
+<h3>Os inscritos do <%=@job.title %> são: </h3>
+<ul>
+ <% @applies.each do |apply| %>
+    <li>
+    <%= link_to apply.profile.name, apply.profile %> 
+    </li>
+<% end %>
+ </ul>
+
+
+<%= link_to 'Voltar', root_path %>

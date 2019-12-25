@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :jobs, only: [:index, :new, :create, :show] do
     post 'start', on: :member
+    get 'candidates', on: :member
+    get 'created', on: :collection
   end
   resources :profiles, only: [:edit, :update, :show, :index, :new, :create] do
     get 'my_jobs', on: :member
   end
-  resources :applies, only: [:edit, :update, :show]
+  resources :applies, only: [:edit, :update, :show] 
 end

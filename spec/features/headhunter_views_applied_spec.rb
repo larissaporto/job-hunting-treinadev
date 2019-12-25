@@ -16,7 +16,7 @@ feature 'Headhunter see all that applied to the job' do
                                 photo: Rails.root.join('spec', 'support', 'images.jpeg'),
                                 condition: :done)
         job = Job.create!(title: 'Vaga desenvolvedor', description: 'Empresa X está a procura de Juniors',
-                        skills: 'Ruby on Rails', salary_from: 5000, salary_to: 10000, 
+                        skills: 'Ruby on Rails', salary_from: 5000, salary_to: 10000, headhunter: headhunter, 
                         end_date: 3.days.from_now, where: 'Avenida Paulista', job_level: 0)
         apply = Apply.create!(job: job, profile: profile, cover_letter: 'Trabalhei com A há 5 anos')
         otherapply = Apply.create!(job: job, profile: otherprofile, cover_letter: 'Trabalhei com B há 5 anos')
@@ -26,6 +26,7 @@ feature 'Headhunter see all that applied to the job' do
         visit root_path
         click_on 'Vagas Cadastradas'
         click_on job.title
+        click_on 'Candidatos'
 
         expect(page).to have_content(profile.name)
         expect(page).to have_content(otherprofile.name)
