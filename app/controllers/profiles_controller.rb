@@ -35,7 +35,8 @@ class ProfilesController < ApplicationController
     end
 
     def my_jobs
-        @applies = Apply.where(@profile.applies)
+        @profile = Profile.find(params[:id])
+        @applies = Apply.where(profile: @profile)
     end
 
 
