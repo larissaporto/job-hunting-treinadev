@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-    before_action :authenticate_headhunter!, only: [:new, :create]
-    before_action :authorize_headhunter, only: [:new, :create]
+    before_action :authenticate_headhunter!, only: [:edit, :update]
+    before_action :authorize_headhunter, only: [:edit, :update]
     before_action :set_job, only:[:show, :start]
 
     def index 
