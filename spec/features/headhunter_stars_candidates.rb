@@ -26,7 +26,8 @@ feature 'Headhunter stars candidates' do
         visit candidates_job_path(job)
         
         first('li a').click
-
+        save_and_open_page
+        
         apply.reload
         expect(apply).to be_starred
         
