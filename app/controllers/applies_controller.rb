@@ -23,7 +23,7 @@ class AppliesController < ApplicationController
         else
             @apply.unstarred!
         end
-        redirect_to @apply.profile_id 
+        redirect_to candidates_job_path(@apply.job_id) 
     end
   
 
