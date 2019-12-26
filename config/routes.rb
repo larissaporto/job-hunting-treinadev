@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     resources :comments, only:[:new, :create, :show, :index]
   end
   resources :applies, only: [:edit, :update, :show] do
-    post 'star', on: :member
+    get 'star', on: :member
   end
 end

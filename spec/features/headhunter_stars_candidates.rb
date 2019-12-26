@@ -25,11 +25,10 @@ feature 'Headhunter stars candidates' do
 
         visit candidates_job_path(job)
         
-        first('//img').click
+        first('li img').click
 
         apply.reload
-        expect(current_path).to eq(candidates_job_path(job))
-        expect(apply).to be_starred
+        expect(otherapply).to be_starred
         
     end
 end

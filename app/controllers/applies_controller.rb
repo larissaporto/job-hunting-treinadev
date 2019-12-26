@@ -16,6 +16,15 @@ class AppliesController < ApplicationController
         end
     end
     
+    def star
+        @apply = Apply.find(params[:id])
+        if @apply.unstarred?
+            @apply.starred!
+        else
+            @apply.unstarred!
+        end
+        redirect_to @apply.profile_id 
+    end
   
 
     private
