@@ -15,6 +15,8 @@ class AppliesController < ApplicationController
             render :update
         end
     end
+    
+  
 
     private
 

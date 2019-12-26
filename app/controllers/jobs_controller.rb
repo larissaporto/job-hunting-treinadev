@@ -41,6 +41,7 @@ class JobsController < ApplicationController
         @applies = Apply.where(job: @job)
     end
 
+
     private
 
     def authorize_headhunter

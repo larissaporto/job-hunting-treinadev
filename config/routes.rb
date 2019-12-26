@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     get 'my_jobs', on: :member
     resources :comments, only:[:new, :create, :show, :index]
   end
-  resources :applies, only: [:edit, :update, :show] 
+  resources :applies, only: [:edit, :update, :show] do
+    post 'star', on: :member
+  end
 end
