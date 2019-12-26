@@ -1,0 +1,15 @@
+
+<%= form_with(model: [ @profile, @profile.comments.build ], 
+local: true) do |f|%>
+   <p>
+    <%= f.label :commenter, 'Nome do Headhunter' %><br>
+    <%= f.text_field :commenter %>
+   </p>
+   <p>
+    <%= f.label :body, 'Comentário' %><br>
+    <%= f.text_area :body %>
+   </p>
+   <p>
+    <%= f.submit 'Postar' %>
+   </p>
+<% end %>

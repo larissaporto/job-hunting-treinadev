@@ -1,5 +1,7 @@
 class AppliesController < ApplicationController
-    
+    before_action :authenticate_applicant!, only: [:edit, :update]
+    before_action :authorize_applicant, only: [:edit, :update]
+
     def edit
         @apply = Apply.find(params[:id])      
     end
@@ -12,5 +14,11 @@ class AppliesController < ApplicationController
             flash[:alert] = "Erro"
             render :update
         end
+    end
+
+    private
+
+    def authorize_applicant
+        redirect_to root_path unless current_applicant
     end
 end

@@ -43,7 +43,11 @@ class ProfilesController < ApplicationController
     private
 
     def get_profile
-        @profile = current_applicant.profile || current_applicant.build_profile
+        if current_applicant
+            @profile = current_applicant.profile || current_applicant.build_profile
+        else
+            @profile = @profile = Profile.find(params[:id])
+        end
     end
 
     def profile_params

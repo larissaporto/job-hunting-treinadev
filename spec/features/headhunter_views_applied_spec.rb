@@ -35,4 +35,35 @@ feature 'Headhunter see all that applied to the job' do
         expect(page).to have_content(profile.name)
         expect(page).not_to have_content(otherprofile.name)
     end    
+    scenario 'and successfully comments on candidates profile' do
+        headhunter = Headhunter.create!(email: 'test@test.com', password: '123456')
+        applicant = Applicant.create!(email: 'test@test.com', password: '123456')
+        profile = Profile.create!(name: 'Aninha', social_name: 'Pedro', birth_date: '13/12/1990',
+                                qualification: 0, description: 'Sou comunicativo, gosto de responsabilidades',
+                                experience: 'Trabalhei na empresa X', applicant: applicant,
+                                photo: Rails.root.join('spec', 'support', 'images.jpeg'),
+                                condition: :done)
+        job = Job.create!(title: 'Vaga desenvolvedor', description: 'Empresa X está a procura de Juniors',
+                        skills: 'Ruby on Rails', salary_from: 5000, salary_to: 10000, headhunter: headhunter, 
+                        end_date: 3.days.from_now, where: 'Avenida Paulista', job_level: 0)
+        apply = Apply.create!(job: job, profile: profile, cover_letter: 'Trabalhei com A há 5 anos')
+
+        login_as(headhunter, scope: :headhunter)
+
+        visit root_path
+        click_on 'Vagas Cadastradas'
+        click_on job.title
+        click_on 'Candidatos'
+        click_on profile.name
+
+        fill_in 'Nome do Headhunter', with: 'Augusto'
+        fill_in 'Comentário', with: 'Muito bom CV'
+        click_on 'Postar'
+
+        expect(page).to have_content('Augusto')
+        expect(page).to have_content('Muito bom CV')
+        expect(page).to have_content('Comentário adicionado com sucesso')
+
+
+    end
 end

@@ -3,6 +3,7 @@ class Profile < ApplicationRecord
   has_one_attached :photo
   has_many :applies
   has_many :jobs, through: :applies
+  has_many :comments
   
   enum condition: {
     incomplete: 0,

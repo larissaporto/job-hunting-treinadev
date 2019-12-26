@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
-    before_action :authenticate_headhunter!, only: [:edit, :update]
-    before_action :authorize_headhunter, only: [:edit, :update]
+    before_action :authenticate_headhunter!, only: [:edit, :update, :created, :candidates]
+    before_action :authenticate_applicant!, only: [:start]
+    before_action :authorize_headhunter, only: [:edit, :update, :created, :candidates]
+    before_action :authorize_applicant, only: [:start]
     before_action :set_job, only:[:show, :start, :candidates]
 
     def index 
@@ -43,6 +45,9 @@ class JobsController < ApplicationController
 
     def authorize_headhunter
         redirect_to root_path unless current_headhunter
+    end
+    def authorize_applicant
+        redirect_to root_path unless current_applicant
     end
 
     def set_job
