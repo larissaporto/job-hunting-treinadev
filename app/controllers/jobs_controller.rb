@@ -3,7 +3,7 @@ class JobsController < ApplicationController
     before_action :authenticate_applicant!, only: [:start]
     before_action :authorize_headhunter, only: [:edit, :update, :created, :candidates]
     before_action :authorize_applicant, only: [:start]
-    before_action :set_job, only:[:show, :start, :candidates]
+    before_action :set_job, only:[:show, :start, :candidates, :end]
 
     def index 
         @jobs = Job.all
@@ -41,6 +41,11 @@ class JobsController < ApplicationController
         @applies = Apply.where(job: @job)
     end
 
+    def end
+        @job.unavailable!
+        @jobs = Job.where(headhunter: current_headhunter)
+        redirect_to created_jobs_path(@jobs)
+    end
 
     private
 

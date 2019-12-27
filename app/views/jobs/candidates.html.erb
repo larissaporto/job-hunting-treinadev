@@ -3,12 +3,12 @@
  <% @applies.each do |apply| %>
     <% if apply.starred? %>
     <li>
-    <%= link_to image_tag('/star-fill.svg', size: '24' ), star_apply_path %>
+    <%= link_to image_tag('/star-fill.svg', size: '24' ), star_apply_path(apply) %>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
     </li>
     <% else %>
     <li>
-    <%= link_to image_tag('/stars.png', size: '24' ), star_apply_path%>
+    <%= link_to image_tag('/stars.png', size: '24' ), star_apply_path(apply)%>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
     </li>
     <% end %>

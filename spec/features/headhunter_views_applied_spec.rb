@@ -35,7 +35,7 @@ feature 'Headhunter see all that applied to the job' do
         expect(page).to have_content(profile.name)
         expect(page).not_to have_content(otherprofile.name)
     end    
-    scenario 'and successfully comments on candidates profile' do
+    scenario 'and comments on candidates profile' do
         headhunter = Headhunter.create!(email: 'test@test.com', password: '123456')
         applicant = Applicant.create!(email: 'test@test.com', password: '123456')
         profile = Profile.create!(name: 'Aninha', social_name: 'Pedro', birth_date: '13/12/1990',

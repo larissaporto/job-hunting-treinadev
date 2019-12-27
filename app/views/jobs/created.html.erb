@@ -2,9 +2,12 @@
 
 <ul>
  <% @jobs.each do |job| %>
-    <li>
-    <%= link_to job.title, job %> 
-    </li>
+    <% if job.available? %>
+      <li>
+        <%= link_to job.title, job %> 
+        <%= button_to 'Encerrar vaga', end_job_path(job) %>
+      </li>
+    <% end %>
 <% end %>
  </ul>
 

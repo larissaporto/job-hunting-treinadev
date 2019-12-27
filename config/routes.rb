@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :jobs, only: [:index, :new, :create, :show] do
     post 'start', on: :member
     get 'candidates', on: :member
+    post 'end', on: :member
     get 'created', on: :collection
   end
   resources :profiles, only: [:edit, :update, :show, :index, :new, :create] do
