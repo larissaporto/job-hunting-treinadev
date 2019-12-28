@@ -29,8 +29,8 @@ class JobsController < ApplicationController
     end
 
     def start
-        @job.applies.create!(profile: current_applicant.profile)
-        redirect_to controller: :applies, action: :edit, to_param => @job.applies
+        @apply = @job.applies.create!(profile: current_applicant.profile)
+        redirect_to edit_apply_path(@apply)
     end
 
     def created
@@ -46,6 +46,7 @@ class JobsController < ApplicationController
         @jobs = Job.where(headhunter: current_headhunter)
         redirect_to created_jobs_path(@jobs)
     end
+    
 
     private
 

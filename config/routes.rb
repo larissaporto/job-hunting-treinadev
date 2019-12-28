@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   end
   resources :applies, only: [:edit, :update, :show] do
     get 'star', on: :member
+    get 'deny', on: :member
   end
+  resources :feedbacks, only: [:edit, :update, :show, :index]
 end

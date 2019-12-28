@@ -9,7 +9,7 @@ class AppliesController < ApplicationController
         @apply = Apply.find(params[:id])
         if @apply.update!(params.require(:apply).permit(:cover_letter, :job_id, :profile_id))
             flash[:notice] = 'Incrição efetuada com sucesso'
-            redirect_to controller: :jobs, action: :show, to_param => @apply.job_id
+            redirect_to job_path(@apply.job_id)
         else
             flash[:alert] = "Erro"
             render :update
@@ -24,6 +24,14 @@ class AppliesController < ApplicationController
             @apply.unstarred!
         end
         redirect_to candidates_job_path(@apply.job_id) 
+    end
+
+    def deny
+        @apply = Apply.find(params[:id])
+        @apply.rejected!
+
+        @feedback = @apply.create_feedback
+        redirect_to edit_feedback_path(@feedback)
     end
   
 

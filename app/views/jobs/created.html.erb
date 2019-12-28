@@ -1,5 +1,5 @@
-<h3> Vagas criadas </h3>
-
+<h3> Suas Vagas: </h3>
+<h4>Abertas:</h4>
 <ul>
  <% @jobs.each do |job| %>
     <% if job.available? %>
@@ -11,5 +11,14 @@
 <% end %>
  </ul>
 
-
+<h4>Encerradas:</h4>
+<ul>
+ <% @jobs.each do |job| %>
+    <% if job.unavailable? %>
+      <li>
+        <%= link_to job.title, job %> 
+      </li>
+    <% end %>
+<% end %>
+ </ul>
 <%= link_to 'Voltar', :back %>

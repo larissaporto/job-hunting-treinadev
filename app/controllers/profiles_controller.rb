@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
         else
             flash[:alert] = "Erro"
             render :new
-  end
+        end
     end
 
     def show
@@ -35,8 +35,7 @@ class ProfilesController < ApplicationController
     end
 
     def my_jobs
-        @profile = Profile.find(params[:id])
-        @applies = Apply.where(profile: @profile)
+        @applies = @profile.applies
     end
 
 
@@ -44,9 +43,9 @@ class ProfilesController < ApplicationController
 
     def get_profile
         if current_applicant
-            @profile = current_applicant.profile || current_applicant.build_profile
-        else
-            @profile = @profile = Profile.find(params[:id])
+            @profile = Profile.find(params[:id]) || @profile = current_applicant.profile
+        elsif current_headhunter
+            @profile = Profile.find(params[:id])
         end
     end
 

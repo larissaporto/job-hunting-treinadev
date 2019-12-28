@@ -1,12 +1,16 @@
 <h1> Vagas </h1>
-<%= link_to 'Criar nova vaga', new_job_path%> 
+<% if current_headhunter %>
+    <%= link_to 'Criar nova vaga', new_job_path%> 
+<% end %>
 
 <ul>
  <% @jobs.each do |job| %>
-    <li>
-    <%= link_to job.title, job %> 
-    <p> <%= job.description %> </p>
-    </li>
+    <% if job.available? %>
+        <li>
+        <%= link_to job.title, job %> 
+        <p> <%= job.description %> </p>
+        </li>
+    <% end %>
 <% end %>
  </ul>
 

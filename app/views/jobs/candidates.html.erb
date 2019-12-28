@@ -1,15 +1,17 @@
 <h3>Os inscritos do <%=@job.title %> são: </h3>
 <ul>
  <% @applies.each do |apply| %>
-    <% if apply.starred? %>
+    <% if apply.starred? && apply.eligible? %>
     <li>
     <%= link_to image_tag('/star-fill.svg', size: '24' ), star_apply_path(apply) %>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
+    <%= button_to 'Rejeitar', deny_apply_path(apply), method: :get %>
     </li>
-    <% else %>
+    <% elsif apply.unstarred? && apply.eligible?%>
     <li>
     <%= link_to image_tag('/stars.png', size: '24' ), star_apply_path(apply)%>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
+    <%= button_to 'Rejeitar', deny_apply_path(apply), method: :get %>
     </li>
     <% end %>
    

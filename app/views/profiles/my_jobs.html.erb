@@ -1,13 +1,27 @@
-<h3> Incrições Feitas </h3>
+<h3> Incrições em andamento: </h3>
 
 <ul>
  <% @applies.each do |apply| %>
-    <li>
-    <%= link_to apply.job.title, apply.job %> 
-    </li>
+    <% if apply.eligible? %>
+      <li>
+        <%= link_to apply.job.title, apply.job %> 
+      </li>
+    <% end %>
+    
 <% end %>
  </ul>
 
-
+<h3>Inscrições Rejeitadas:</h3>
+<ul>
+ <% @applies.each do |apply| %>
+    <% if apply.rejected? %>
+      <li>
+       <strong> <%= apply.job.title  %> </strong> <br>
+        <strong>Feedback: </strong> <br>
+        <%= apply.feedback.body  %> 
+     </li>
+    <% end %>
+ <% end %>
+ </ul>
 <%= link_to 'Voltar', :back %>
 

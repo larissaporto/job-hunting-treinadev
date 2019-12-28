@@ -23,5 +23,8 @@
 <h3>Adicionar Comentários</h3>
 <%= render partial: 'comments/form' %>
 
-<%= link_to 'Editar Perfil', edit_profile_path(@profile) %>
+<% if current_applicant %>
+  <%= link_to 'Editar Perfil', edit_profile_path(@profile) %>
+<% end %>
+
 <%= link_to 'Voltar', :back %>

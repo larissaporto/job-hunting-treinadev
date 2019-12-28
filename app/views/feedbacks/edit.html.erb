@@ -1,0 +1,13 @@
+<h3>Feedback do <%= @apply.job.title%> </h3>
+
+<p>Antes de rejeitar um candidato, por favor apresente um feedback!</p>
+
+<%= form_with(model: @feedback, local: true) do |f| %>
+    <p>
+       <%= f.label :body, 'Feedback' %><br>
+       <%= f.text_area :body %>
+    </p>
+   <p>
+       <%= f.submit 'Enviar' %>
+   </p>
+<% end %>
