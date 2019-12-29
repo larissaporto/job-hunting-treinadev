@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'candidates', on: :member
     post 'end', on: :member
     get 'created', on: :collection
+    get 'search', on: :collection
   end
   resources :profiles, only: [:edit, :update, :show, :index, :new, :create] do
     get 'my_jobs', on: :member

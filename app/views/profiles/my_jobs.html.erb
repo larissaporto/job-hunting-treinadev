@@ -1,4 +1,4 @@
-<h3> Incrições em andamento: </h3>
+<h4> Incrições em andamento: </h4>
 
 <ul>
  <% @applies.each do |apply| %>
@@ -11,7 +11,7 @@
 <% end %>
  </ul>
 
-<h3>Inscrições Rejeitadas:</h3>
+<h4>Inscrições Rejeitadas:</h4>
 <ul>
  <% @applies.each do |apply| %>
     <% if apply.rejected? %>
@@ -24,7 +24,7 @@
  <% end %>
  </ul>
 
-<h3> Incrições com propostas: </h3>
+<h4> Incrições com propostas: </h4>
 
 <ul>
  <% @applies.each do |apply| %>

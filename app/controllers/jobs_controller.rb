@@ -46,6 +46,15 @@ class JobsController < ApplicationController
         @jobs = Job.where(headhunter: current_headhunter)
         redirect_to created_jobs_path(@jobs)
     end
+
+    def search
+        @jobs = Job
+                .where('title like ?', "%#{params[:q]}%")
+                .or(Job.where('description like ?', "%#{params[:q]}%"))
+                .order(created_at: :desc)
+        #redirect_to search_jobs_path
+        render :index
+    end
     
 
     private

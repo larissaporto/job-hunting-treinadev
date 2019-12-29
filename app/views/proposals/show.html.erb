@@ -7,7 +7,7 @@
 
 <% if @proposal.negative? %>
     <%= form_with(model: [ @proposal, @proposal.evaluations.build ], local: true) do |f|%>
-        <%# if @proposal.evaluation.to_do %>
+        <% if @proposal.evaluations.to_do %>
         <p>
             <%= f.label :body, 'Feedback' %><br>
             <%= f.text_area :body %>
@@ -15,15 +15,20 @@
         <p>
             <%= f.submit 'Enviar' %>
         </p>
-        <%# end %>
+        <% end %>
     
-    <% end %>  
+    <% end %> 
+
+     <h4>Resposta do candidato(a)</h4>
+    <%= @proposal.evaluations.each do |evaluation| %>
+        <p>
+        <%= evaluation.body%>
+        </p>
+    <% end %>
 <% end %>
-<h4>Resposta do candidato(a)</h4>
-<%= @proposal.evaluations.each do |evaluation| %>
-    <p>
-    <%= evaluation.body%>
-    </p>
+
+<% if @proposal.positive? && current_headhunter %>
+  <%= button_to 'Encerrar vaga', end_job_path(@proposal.apply.job) %>
 <% end %>
 
 <dl>
