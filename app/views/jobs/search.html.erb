@@ -1,0 +1,13 @@
+<h4> A busca por <%= params[:q]%> </h4>
+
+
+<ul>
+ <% @jobs.each do |job| %>
+    <% if job.available? %>
+        <li>
+        <p><%= link_to job.title, job %></p> 
+        <p> <%= job.description %> </p>
+        </li>
+    <% end %>
+<% end %>
+ </ul>

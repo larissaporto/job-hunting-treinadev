@@ -52,8 +52,6 @@ class JobsController < ApplicationController
                 .where('title like ?', "%#{params[:q]}%")
                 .or(Job.where('description like ?', "%#{params[:q]}%"))
                 .order(created_at: :desc)
-        #redirect_to search_jobs_path
-        render :index
     end
     
 
