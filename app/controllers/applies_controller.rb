@@ -34,6 +34,13 @@ class AppliesController < ApplicationController
         redirect_to edit_feedback_path(@feedback)
     end
   
+    def allow
+        @apply = Apply.find(params[:id])
+        @apply.accepted!
+
+        @proposal = @apply.create_proposal
+        redirect_to edit_proposal_path(@proposal)
+    end
 
     private
 

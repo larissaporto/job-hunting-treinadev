@@ -1,0 +1,26 @@
+<h3>Proposta de Trabalho do(a) <%= @proposal.apply.job.title%> </h3>
+
+<dl>
+    <dt>Cargo:</dt>
+    <dd> <%= @proposal.position %> </dd>
+
+    <dt>Detalhes do Cargo:</dt>
+    <dd> <%= @proposal.job_details %> </dd>
+
+    <dt> Salário: </dt>
+    <dd> <%= number_to_currency(@proposal.salary) %>  </dd>
+
+    <dt>Bônus: </dt>
+    <dd> <%= number_to_currency(@proposal.bonus) %> </dd>
+
+    <dt>Benefícios: </dt>
+    <dd> <%= @proposal.benefits%> </dd>
+
+    <dt> Começa em: </dt>
+    <dd> <%= l @proposal.start_date %> </dd>
+
+    <dt>Informações Adicionais: </dt>
+    <dd> <%= @proposal.addicional_info %> </dd>
+</dl>
+
+<%= link_to 'Voltar', candidates_job_path(@proposal.apply.job) %>

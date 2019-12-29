@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :applies, only: [:edit, :update, :show] do
     get 'star', on: :member
     get 'deny', on: :member
+    get 'allow', on: :member
   end
   resources :feedbacks, only: [:edit, :update, :show, :index]
+  resources :proposals, only: [:edit, :update, :show, :index]
+
 end

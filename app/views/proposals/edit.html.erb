@@ -1,0 +1,35 @@
+<h3>Proposta de emprego da <%= @apply.job.title%></h3>
+
+<%= form_with model: @proposal, local: true do |f| %>
+    <p>
+       <%= f.label :position, 'Cargo' %><br>
+       <%= f.text_field :position %>
+    </p>
+    <p>
+       <%= f.label :job_details, 'Detalhes do Cargo' %><br>
+       <%= f.text_area :job_details %>
+    </p>
+    <p>
+       <%= f.label :start_date, 'Data de início' %><br>
+       <%= f.date_field :start_date %>
+    </p>
+    <p>
+       <%= f.label :salary, 'Salário' %><br>
+       <%= f.text_field :salary %>
+    </p>
+    <p>
+       <%= f.label :bonus, 'Bônus' %><br>
+       <%= f.text_field :bonus %>
+    </p>
+    <p>
+       <%= f.label :benefits, 'Benefícios' %><br>
+       <%= f.text_field :benefits %>
+    </p>
+    <p>
+       <%= f.label :addicional_info, 'Informações Adicionais' %><br>
+       <%= f.text_area :addicional_info %>
+    </p>
+    <p>
+    <%= f.submit 'Enviar'%>
+    </p>
+<% end %>

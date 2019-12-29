@@ -2,6 +2,7 @@ class Job < ApplicationRecord
     has_many :applies
     has_many :profiles, through: :applies 
     has_many :feedbacks, through: :applies 
+    has_many :proposals, through: :applies
     belongs_to :headhunter
 
     enum job_level: { Estágio: 0, Júnior: 5, Pleno: 10, Sênior: 15, Especialista: 20, Diretor: 25 }

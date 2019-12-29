@@ -1,22 +1,51 @@
-<h3>Os inscritos do <%=@job.title %> são: </h3>
+<h3>Os inscritos(as) do <%=@job.title %> são: </h3>
 <ul>
  <% @applies.each do |apply| %>
     <% if apply.starred? && apply.eligible? %>
     <li>
     <%= link_to image_tag('/star-fill.svg', size: '24' ), star_apply_path(apply) %>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
+    <%= button_to 'Aceitar', allow_apply_path(apply), method: :get %>
     <%= button_to 'Rejeitar', deny_apply_path(apply), method: :get %>
     </li>
     <% elsif apply.unstarred? && apply.eligible?%>
     <li>
     <%= link_to image_tag('/stars.png', size: '24' ), star_apply_path(apply)%>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
+    <%= button_to 'Aceitar', allow_apply_path(apply), method: :get %>
     <%= button_to 'Rejeitar', deny_apply_path(apply), method: :get %>
     </li>
     <% end %>
    
 <% end %>
  </ul>
+<h3> Propostas Feitas </h3>
+<ul>
+ <% @applies.each do |apply| %>
+    <% if apply.starred? && apply.accepted? %>
+    <li>
+    <%= link_to image_tag('/star-fill.svg', size: '24' ), star_apply_path(apply) %>
+    <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
+    <%= button_to 'Proposta', proposal_path(apply.proposal) %>
+    </li>
+    <% elsif apply.unstarred? && apply.accepted?%>
+    <li>
+    <%= link_to image_tag('/stars.png', size: '24' ), star_apply_path(apply)%>
+    <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
+    <%= button_to 'Proposta', proposal_path(apply.proposal) %>
+    </li>
+    <% end %>
+   
+<% end %>
+ </ul>
 
-
+<h3> Os recusados(as) são: </h3>
+<ul>
+ <% @applies.each do |apply| %>
+    <% if apply.rejected? %>
+    <li>
+    <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
+    </li>
+    <% end %>
+ <% end %>
 <%= link_to 'Voltar', :back %>
