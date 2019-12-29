@@ -2,6 +2,9 @@ class AppliesController < ApplicationController
     before_action :authenticate_applicant!, only: [:edit, :update]
     before_action :authorize_applicant, only: [:edit, :update]
 
+    before_action :authenticate_headhunter!, only: [:star, :deny, :allow]
+    before_action :authorize_headhunter, only: [:star, :deny, :allow]
+
     def edit
         @apply = Apply.find(params[:id])      
     end
@@ -46,5 +49,8 @@ class AppliesController < ApplicationController
 
     def authorize_applicant
         redirect_to root_path unless current_applicant
+    end
+    def authorize_headhunter
+        redirect_to root_path unless current_headhunter
     end
 end
