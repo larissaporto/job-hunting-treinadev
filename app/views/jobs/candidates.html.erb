@@ -1,4 +1,4 @@
-<h3>Os inscritos(as) do <%=@job.title %> são: </h3>
+<h5>Os inscritos(as) do <%=@job.title %> são: </h5>
 <ul>
  <% @applies.each do |apply| %>
     <% if apply.starred? && apply.eligible? %>
@@ -19,27 +19,27 @@
    
 <% end %>
  </ul>
-<h3> Propostas Feitas </h3>
+<h5> Propostas Feitas </h5>
 <ul>
  <% @applies.each do |apply| %>
     <% if apply.starred? && apply.accepted? %>
     <li>
     <%= link_to image_tag('/star-fill.svg', size: '24' ), star_apply_path(apply) %>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
-    <%= button_to 'Proposta', proposal_path(apply.proposal) %>
+    <%= button_to 'Proposta', proposal_path(apply.proposal), method: :get %>
     </li>
     <% elsif apply.unstarred? && apply.accepted?%>
     <li>
     <%= link_to image_tag('/stars.png', size: '24' ), star_apply_path(apply)%>
     <%= link_to apply.profile.name, profile_path(apply.profile.id) %> 
-    <%= button_to 'Proposta', proposal_path(apply.proposal) %>
+    <%= button_to 'Proposta', proposal_path(apply.proposal), method: :get %>
     </li>
     <% end %>
    
 <% end %>
  </ul>
 
-<h3> Os recusados(as) são: </h3>
+<h5> Os recusados(as) são: </h5>
 <ul>
  <% @applies.each do |apply| %>
     <% if apply.rejected? %>
