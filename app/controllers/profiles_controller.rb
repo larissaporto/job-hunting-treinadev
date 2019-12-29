@@ -38,6 +38,10 @@ class ProfilesController < ApplicationController
         @applies = @profile.applies
     end
 
+    def my_proposals
+        @applies = @profile.applies
+    end
+
 
     private
 

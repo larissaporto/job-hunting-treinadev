@@ -4,6 +4,7 @@ class Profile < ApplicationRecord
   has_many :applies
   has_many :jobs, through: :applies
   has_many :comments
+  has_many :proposals, through: :applies
   
   enum condition: {
     incomplete: 0,

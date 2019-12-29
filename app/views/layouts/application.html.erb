@@ -11,6 +11,7 @@
 
   <body>
     <nav>
+      <%= link_to 'Home', root_path %>
     <% if applicant_signed_in? %>
       <%= render partial: 'shared/menu_applicant' %>
       <%= link_to 'Sair', destroy_applicant_session_path, method: :delete %>

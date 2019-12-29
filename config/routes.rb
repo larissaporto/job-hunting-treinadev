@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :profiles, only: [:edit, :update, :show, :index, :new, :create] do
     get 'my_jobs', on: :member
+    get 'my_proposals', on: :member
     resources :comments, only:[:new, :create, :show, :index]
   end
   resources :applies, only: [:edit, :update, :show] do

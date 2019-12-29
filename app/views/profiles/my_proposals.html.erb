@@ -1,0 +1,14 @@
+<h4>Propostas:</h4>
+
+<ul>
+ <% @applies.each do |apply| %>
+    <% if apply.accepted? %>
+      <li>
+        <%= link_to apply.job.title, apply.proposal %> 
+      </li>
+    <% end %>
+    
+<% end %>
+ </ul>
+
+<%= link_to 'Voltar', :back %>

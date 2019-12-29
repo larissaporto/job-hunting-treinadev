@@ -22,5 +22,8 @@
     <dt>Informações Adicionais: </dt>
     <dd> <%= @proposal.addicional_info %> </dd>
 </dl>
-
-<%= link_to 'Voltar', candidates_job_path(@proposal.apply.job) %>
+<% if current_headhunter %>
+   <%= link_to 'Voltar', candidates_job_path(@proposal.apply.job) %>
+<% else %>
+   <%= link_to 'Voltar', :back %>
+<% end %>
