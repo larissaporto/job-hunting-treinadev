@@ -1,4 +1,8 @@
+
 <h3>Proposta de Trabalho do(a) <%= @proposal.apply.job.title%> </h3>
+<% if @proposal.pondering? && current_applicant %>
+  <%= button_to 'Aceitar', pass_proposal_path(@proposal), method: :get %>
+<% end %>
 
 <dl>
     <dt>Cargo:</dt>

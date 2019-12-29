@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get 'allow', on: :member
   end
   resources :feedbacks, only: [:edit, :update, :show, :index]
-  resources :proposals, only: [:edit, :update, :show, :index]
+  resources :proposals, only: [:edit, :update, :show, :index] do
+    get 'pass', on: :member
+  end
 
 end

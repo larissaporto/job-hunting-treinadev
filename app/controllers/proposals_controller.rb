@@ -19,4 +19,18 @@ class ProposalsController < ApplicationController
     def show
         @proposal = Proposal.find(params[:id])
     end
+
+    def pass
+        @proposal = Proposal.find(params[:id])
+        @proposal.positive!
+        
+        profile = @proposal.apply.profile
+
+        profile.applies.each do |apply|
+            if apply.proposal.pondering?
+                apply.proposal.negative!
+            end
+        end
+        redirect_to @proposal
+    end
 end
