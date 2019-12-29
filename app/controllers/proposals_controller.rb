@@ -33,4 +33,11 @@ class ProposalsController < ApplicationController
         end
         redirect_to @proposal
     end
+
+    def refuse
+        @proposal = Proposal.find(params[:id])
+        @proposal.negative!
+
+        redirect_to @proposal
+    end
 end

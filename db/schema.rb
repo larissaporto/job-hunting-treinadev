@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_034945) do
+ActiveRecord::Schema.define(version: 2019_12_29_052246) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 2019_12_29_034945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_comments_on_profile_id"
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.text "body"
+    t.integer "status", default: 0
+    t.integer "proposal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["proposal_id"], name: "index_evaluations_on_proposal_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|

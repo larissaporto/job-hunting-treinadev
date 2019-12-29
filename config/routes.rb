@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:edit, :update, :show, :index]
   resources :proposals, only: [:edit, :update, :show, :index] do
     get 'pass', on: :member
+    get 'refuse', on: :member
+    resources :evaluations, only: [:new, :create, :show, :index]
   end
 
 end

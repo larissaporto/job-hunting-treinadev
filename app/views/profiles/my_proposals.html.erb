@@ -1,8 +1,33 @@
 <h4>Propostas:</h4>
 
+<h5>Esperando consideração: </h5>
 <ul>
  <% @applies.each do |apply| %>
-    <% if apply.accepted? %>
+    <% if apply.accepted? && apply.proposal.pondering? %>
+      <li>
+        <%= link_to apply.job.title, apply.proposal %> 
+      </li>
+    <% end %>
+    
+<% end %>
+ </ul>
+
+ <h5>Aceita: </h5>
+<ul>
+ <% @applies.each do |apply| %>
+    <% if apply.accepted? && apply.proposal.positive? %>
+      <li>
+        <%= link_to apply.job.title, apply.proposal %> 
+      </li>
+    <% end %>
+    
+<% end %>
+ </ul>
+
+  <h5>Rejeitadas: </h5>
+<ul>
+ <% @applies.each do |apply| %>
+    <% if apply.accepted? && apply.proposal.negative? %>
       <li>
         <%= link_to apply.job.title, apply.proposal %> 
       </li>

@@ -2,6 +2,28 @@
 <h3>Proposta de Trabalho do(a) <%= @proposal.apply.job.title%> </h3>
 <% if @proposal.pondering? && current_applicant %>
   <%= button_to 'Aceitar', pass_proposal_path(@proposal), method: :get %>
+  <%= button_to 'Rejeitar', refuse_proposal_path(@proposal), method: :get %>
+<% end %>
+
+<% if @proposal.negative? %>
+    <%= form_with(model: [ @proposal, @proposal.evaluations.build ], local: true) do |f|%>
+        <%# if @proposal.evaluation.to_do %>
+        <p>
+            <%= f.label :body, 'Feedback' %><br>
+            <%= f.text_area :body %>
+        </p>
+        <p>
+            <%= f.submit 'Enviar' %>
+        </p>
+        <%# end %>
+    
+    <% end %>  
+<% end %>
+<h4>Resposta do candidato(a)</h4>
+<%= @proposal.evaluations.each do |evaluation| %>
+    <p>
+    <%= evaluation.body%>
+    </p>
 <% end %>
 
 <dl>

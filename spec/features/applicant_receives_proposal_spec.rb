@@ -86,4 +86,33 @@ feature 'Applicant receives job proposal' do
         expect(otherproposal).to be_negative
         expect(anotherproposal).to be_negative
     end
+
+    scenario 'and refuses it' do
+        headhunter = Headhunter.create!(email: 'test@test.com', password: '123456')
+        applicant = Applicant.create!(email: 'test@test.com', password: '123456')
+        profile = Profile.create!(name: 'Aninha', social_name: 'Pedro', birth_date: '13/12/1990',
+                                qualification: 0, description: 'Sou comunicativo, gosto de responsabilidades',
+                                experience: 'Trabalhei na empresa X', applicant: applicant,
+                                photo: Rails.root.join('spec', 'support', 'images.jpeg'),
+                                condition: :done)
+        job = Job.create!(title: 'Vaga desenvolvedor', description: 'Empresa X está a procura de Juniors',
+                        skills: 'Ruby on Rails', salary_from: 5000, salary_to: 10000, headhunter: headhunter, 
+                        end_date: 3.days.from_now, where: 'Avenida Paulista', job_level: 0)
+        apply = Apply.create!(job: job, profile: profile, cover_letter: 'Trabalhei com A há 5 anos',
+                            applicant_status: :accepted)
+        proposal = Proposal.create!(apply: apply, position: 'Analista', job_details: 'RoR', start_date: '01/01/2020', 
+                                     salary: 5000, bonus: 500, benefits: 'Odonto', addicional_info: 'Musculação')
+        
+        login_as(applicant, scope: :applicant)
+        
+        visit proposal_path(proposal)
+        click_on 'Rejeitar'
+
+        fill_in 'Feedback', with: 'Descrição vaga das atribuições'
+        click_on 'Enviar'
+
+        proposal.reload
+        expect(proposal).to be_negative
+        expect(page).to have_content('Descrição vaga das atribuições')
+    end
 end
