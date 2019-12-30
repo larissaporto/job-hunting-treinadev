@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
-    before_action :authenticate_headhunter!, only: [:edit, :update, :created, :candidates]
+    before_action :authenticate_headhunter!, only: [:edit, :update, :created, :candidates, :end]
     before_action :authenticate_applicant!, only: [:start]
-    before_action :authorize_headhunter, only: [:edit, :update, :created, :candidates]
+    before_action :authorize_headhunter, only: [:edit, :update, :created, :candidates, :end]
     before_action :authorize_applicant, only: [:start]
     before_action :set_job, only:[:show, :start, :candidates, :end]
 
