@@ -1,9 +1,10 @@
 class ProfilesController < ApplicationController
     before_action :authenticate_applicant!, only:[:edit, :update, 
                                                 :my_jobs, :my_proposals]
-    before_action :authenticate_applicant!, only: [:edit, :update,
+    before_action :authorize_applicant, only: [:edit, :update,
                                                 :my_jobs, :my_proposals]
     before_action :get_profile
+    before_action :applicant_or_headhunter, only: [:show]
 
     def show
     end
@@ -50,4 +51,8 @@ class ProfilesController < ApplicationController
     def authorize_applicant
         redirect_to root_path unless current_applicant
     end    
+
+    def applicant_or_headhunter
+        :authenticate_headhunter! || :authenticate_applicant!
+    end
 end

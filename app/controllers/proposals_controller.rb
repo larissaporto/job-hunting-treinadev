@@ -1,4 +1,10 @@
 class ProposalsController < ApplicationController
+    before_action :authenticate_headhunter!, only: [:edit, :update]
+    before_action :authenticate_applicant!, only: [:pass, :refuse]
+    before_action :authorize_headhunter, only: [:edit, :update]
+    before_action :authorize_applicant, only: [:pass, :refuse]
+    before_action :applicant_or_headhunter, only: [:show]
+
     def edit
         @proposal = Proposal.find(params[:id])
         @apply = @proposal.apply
@@ -39,5 +45,19 @@ class ProposalsController < ApplicationController
         @proposal.negative!
 
         redirect_to @proposal
+    end
+
+    private
+
+    def authorize_headhunter
+        redirect_to root_path unless current_headhunter
+    end
+
+    def authorize_applicant
+        redirect_to root_path unless current_applicant
+    end
+
+    def applicant_or_headhunter
+        :authenticate_headhunter! || :authenticate_applicant!
     end
 end
