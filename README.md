@@ -6,6 +6,7 @@ Estou trabalhando com o Ruby 2.6 e o Rails na versão 5.2.
 As gems instaladas são: capybara, rspec, bootstrap, devise. Não fiz alteração do Database.
 
 RESUMO GERAL
+
 A plataforma possui 2 models devise: uma para o candidato, Applicant, e o outro para o Headhunter.
 Quando o candidato se registra, automáticamente é criado o Perfil, profile, associado a sua conta devise.
 Enquanto o status do profile mudar para done, o candidato ao fazer o log in será levado para editar perfil.
@@ -25,6 +26,7 @@ O feedback de rejeição de candidato é a classe comment e elá é um nested re
 Na classe da proposta, proposal, continua o processo de enviar proposta entrando na action edit e depois de criada ela fica disponível para o candidato. Assim, o candidato pode aceitar, pass, e as outras propostas em aberto são automaticamente rejeitadas e refuse com a possibilidade de dar um retorno com a class evaluation.
 
 CONSIDERAÇÕES ADICIONAIS
+
 A prioridade nesse projeto foi dada para o funcionamento mínimo da plataforma. 
 
 Os testes dos pontos principais elecandos da aplicação no PDF foram feitos por meio das features. Os testes unitários foram feitos por conta dos atributos com datas iniciais e vencimentos. 
