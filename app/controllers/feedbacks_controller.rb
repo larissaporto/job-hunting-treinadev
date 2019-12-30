@@ -1,4 +1,6 @@
 class FeedbacksController < ApplicationController
+    before_action :authenticate_headhunter!, only: [:edit, :update]
+    before_action :authorize_headhunter, only: [:edit, :update]
     def edit
         @feedback = Feedback.find(params[:id])
         @apply = @feedback.apply
@@ -14,5 +16,9 @@ class FeedbacksController < ApplicationController
             render :edit
         end
     end
+    private
 
+    def authorize_headhunter
+        redirect_to root_path unless current_headhunter
+    end
 end
