@@ -1,20 +1,9 @@
 class ProfilesController < ApplicationController
-    before_action :authenticate_applicant!, only:[:new, :create, :edit, :update] 
+    before_action :authenticate_applicant!, only:[:edit, :update, 
+                                                :my_jobs, :my_proposals]
+    before_action :authenticate_applicant!, only: [:edit, :update,
+                                                :my_jobs, :my_proposals]
     before_action :get_profile
-    
-    def new
-    end
-
-    def create
-        @profile = current_applicant.build_profile(profile_params)
-        if @profile.save
-            flash[:notice] = 'Perfil salvo'
-            redirect_to @profile
-        else
-            flash[:alert] = "Erro"
-            render :new
-        end
-    end
 
     def show
     end
@@ -57,5 +46,8 @@ class ProfilesController < ApplicationController
         params.require(:profile).permit(:name, :social_name, :description, :qualification, 
                                         :birth_date, :applicant_id, :photo, :experience)
     end
-        
+
+    def authorize_applicant
+        redirect_to root_path unless current_applicant
+    end    
 end
