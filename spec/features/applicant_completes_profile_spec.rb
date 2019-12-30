@@ -27,4 +27,20 @@ feature 'Applicant creates his profile' do
         expect(page).to have_link('Perfil')
 
     end
+
+    scenario 'and must fill all the blanks to apply' do
+        applicant = Applicant.create!(email: 'applicant@applicant.com', 
+                                      password: '123456')
+        profile = Profile.create!(applicant: applicant)
+        login_as(applicant, scope: :applicant)
+
+        visit edit_profile_path(applicant.profile)
+        
+        fill_in 'Nome', with: ''
+        click_on 'Atualizar Perfil'
+
+        profile.reload 
+        expect(profile).to be_incomplete
+        expect(page).to have_content('Perfil salvo')
+    end
 end

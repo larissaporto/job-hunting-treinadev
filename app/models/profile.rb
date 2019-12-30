@@ -22,4 +22,9 @@ class Profile < ApplicationRecord
     'Mestrado': 35,
     'Doutorado': 40
   }
+
+  def incomplete?
+    name.blank? || description.blank? || qualification.blank? || 
+    birth_date.blank? || photo.blank? || experience.blank?
+  end
 end
