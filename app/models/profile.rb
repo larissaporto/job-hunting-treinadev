@@ -23,7 +23,7 @@ class Profile < ApplicationRecord
     'Doutorado': 40
   }
 
-  def incomplete?
+  def is_incomplete?
     name.blank? || description.blank? || qualification.blank? || 
     birth_date.blank? || photo.blank? || experience.blank?
   end

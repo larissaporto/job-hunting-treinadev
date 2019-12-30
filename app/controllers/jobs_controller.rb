@@ -6,7 +6,9 @@ class JobsController < ApplicationController
     before_action :set_job, only:[:show, :start, :candidates, :end]
 
     def index 
-        @jobs = Job.all
+        @jobs = Job
+                    .all
+                    .order(created_at: :desc)
     end
 
     def new 
