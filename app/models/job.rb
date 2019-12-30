@@ -18,8 +18,9 @@ class Job < ApplicationRecord
     end
 
     def end_date_must_be_different_than_current
-        if end_date == Date.today
-            errors.add(:end_date, 'não pode ser igual a data de hoje')
+        if end_date <= Date.today
+            errors.add(:end_date, 'não pode ser igual ou menor a data de hoje')
+
         end
         if end_date.blank?
             errors.add(:end_date, 'não pode ser vazio')
