@@ -15,7 +15,7 @@ feature 'Headhunter creates a job vacancy' do
         fill_in 'Habilidades', with: 'Ruby on Rails'
         fill_in 'Salário de', with: 5000
         fill_in 'Salário até', with: 10000
-        fill_in 'Data Fim', with: '05/01/2020'
+        fill_in 'Data Fim', with: '05/01/2100'
         fill_in 'Região', with: 'Avenida Paulista'
         choose 'Júnior'
         
