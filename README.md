@@ -5,7 +5,9 @@ Primeiramente gostaria de agradecer a equipe! Aprendi e reforcei muitas coisas q
 Estou trabalhando com o Ruby 2.6 e o Rails na versão 5.2. 
 As gems instaladas são: capybara, rspec, bootstrap, devise. Não fiz alteração do Database.
 
-RESUMO GERAL
+Para executar a aplicação é necessário rodar ``` bin/setup ```
+
+## RESUMO GERAL
 
 A plataforma possui 2 models devise: uma para o candidato, Applicant, e o outro para o Headhunter.
 Quando o candidato se registra, automáticamente é criado o Perfil, profile, associado a sua conta devise.
